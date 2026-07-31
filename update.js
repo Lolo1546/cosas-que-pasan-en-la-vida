@@ -8,68 +8,78 @@ const PAGE_TIMEOUT_MS = 45000;
 const STREAM_WAIT_MS = 25000;
 const VALID_STATUS = 200;
 
+// Patrón correcto según lo observado en Network:
+// https://khala.skylivehd.com/<canal>/tracks-v1a1/mono.m3u8?ip=...&token=...
+const REQUIRED_STREAM_PART = "/tracks-v1a1/mono.m3u8";
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function loadChannels() {
   if (!fs.existsSync(CHANNELS_FILE)) {
-    throw new Error(`No existe ${CHANNELS_FILE}`);
+    throw new Error(`No existe el archivo ${CHANNELS_FILE}`);
   }
 
-  const channels = JSON.parse(fs.readFileSync(CHANNELS_FILE, "utf8"));
+  const raw = fs.readFileSync(CHANNELS_FILE, "utf8");
+  const channels = JSON.parse(raw);
 
   if (!Array.isArray(channels)) {
-    throw new Error(`${CHANNELS_FILE} debe contener un arreglo de canales`);
+    throw new Error(`${CHANNELS_FILE} debe contener un arreglo JSON`);
   }
 
-  return channels.map((channel, index) => {
+  for (const channel of channels) {
     if (!channel.name || !channel.pageUrl) {
-      throw new Error(`Canal inválido en posición ${index + 1}: falta name o pageUrl`);
+      throw new Error(
+        `Cada canal debe tener al menos "name" y "pageUrl": ${JSON.stringify(channel)}`
+      );
     }
+  }
 
-    return {
-      name: String(channel.name).trim(),
-      pageUrl: String(channel.pageUrl).trim(),
-      match: String(channel.match || ".m3u8").trim(),
-    };
-  });
+  return channels;
+}
+
+function normalizeLine(line) {
+  return line.trim();
 }
 
 function readPreviousLinks() {
-  const links = new Map();
+  const previousLinks = new Map();
 
   if (!fs.existsSync(OUTPUT_FILE)) {
-    return links;
+    return previousLinks;
   }
 
   const lines = fs.readFileSync(OUTPUT_FILE, "utf8").split(/\r?\n/);
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
+  let currentName = null;
 
-    if (!line.startsWith("#EXTINF")) {
+  for (const line of lines) {
+    const cleanLine = normalizeLine(line);
+
+    if (cleanLine.startsWith("#EXTINF")) {
+      const commaIndex = cleanLine.lastIndexOf(",");
+      if (commaIndex !== -1) {
+        currentName = cleanLine.slice(commaIndex + 1).trim();
+      }
       continue;
     }
 
-    const commaIndex = line.lastIndexOf(",");
-    if (commaIndex === -1) {
-      continue;
-    }
-
-    const channelName = line.slice(commaIndex + 1).trim();
-    const nextLine = (lines[i + 1] || "").trim();
-
-    if (channelName && nextLine.startsWith("http")) {
-      links.set(channelName, nextLine);
+    if (currentName && cleanLine.startsWith("http")) {
+      previousLinks.set(currentName, cleanLine);
+      currentName = null;
     }
   }
 
-  return links;
+  return previousLinks;
 }
 
-function isCandidateStream(url, match) {
-  if (!url || !url.startsWith("http")) {
+function isCandidateStream(url, match = ".m3u8") {
+  if (!url || typeof url !== "string") {
+    return false;
+  }
+
+  if (!url.startsWith("http")) {
     return false;
   }
 
@@ -77,8 +87,26 @@ function isCandidateStream(url, match) {
     return false;
   }
 
-  // El enlace final debe ser playlist .m3u8, no segmentos temporales .ts.
-  if (url.includes(".ts")) {
+  // No queremos segmentos de video.
+  if (url.includes(".ts?") || url.endsWith(".ts")) {
+    return false;
+  }
+
+  // No queremos playlists genéricos si ya sabemos que el correcto es mono.m3u8.
+  if (url.includes("/index.m3u8")) {
+    return false;
+  }
+
+  if (url.includes("/master.m3u8")) {
+    return false;
+  }
+
+  if (url.includes("/playlist.m3u8")) {
+    return false;
+  }
+
+  // Filtro principal: aceptar solo el patrón correcto observado en Network.
+  if (!url.includes(REQUIRED_STREAM_PART)) {
     return false;
   }
 
@@ -87,55 +115,71 @@ function isCandidateStream(url, match) {
 
 async function findStreamUrl(browser, channel) {
   const page = await browser.newPage();
+
   let resolved = false;
   let streamUrl = null;
-
-  await page.setUserAgent(
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
-    "(KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
-  );
-
-  await page.setExtraHTTPHeaders({
-    "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
-  });
-
-  const streamPromise = new Promise((resolve) => {
-    const onResponse = async (response) => {
-      if (resolved) {
-        return;
-      }
-
-      const url = response.url();
-      const status = response.status();
-
-      if (!isCandidateStream(url, channel.match)) {
-        return;
-      }
-
-      console.log(`[${channel.name}] Detectado candidato: ${url}`);
-      console.log(`[${channel.name}] Status: ${status}`);
-
-      if (status === VALID_STATUS) {
-        resolved = true;
-        streamUrl = url;
-        page.off("response", onResponse);
-        resolve(url);
-      }
-    };
-
-    page.on("response", onResponse);
-
-    setTimeout(() => {
-      if (!resolved) {
-        resolved = true;
-        page.off("response", onResponse);
-        resolve(null);
-      }
-    }, STREAM_WAIT_MS);
-  });
+  let totalM3u8Detected = 0;
+  let totalRejected = 0;
 
   try {
-    console.log(`\nProcesando: ${channel.name}`);
+    await page.setDefaultNavigationTimeout(PAGE_TIMEOUT_MS);
+    await page.setDefaultTimeout(PAGE_TIMEOUT_MS);
+
+    await page.setUserAgent(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+      "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    );
+
+    const streamPromise = new Promise((resolve) => {
+      const timer = setTimeout(() => {
+        if (!resolved) {
+          resolved = true;
+          resolve(null);
+        }
+      }, STREAM_WAIT_MS);
+
+      page.on("response", async (response) => {
+        if (resolved) {
+          return;
+        }
+
+        const url = response.url();
+        const status = response.status();
+
+        if (!url.includes(".m3u8")) {
+          return;
+        }
+
+        totalM3u8Detected++;
+
+        console.log(`[${channel.name}] .m3u8 detectado: ${url}`);
+        console.log(`[${channel.name}] status: ${status}`);
+
+        if (status !== VALID_STATUS) {
+          totalRejected++;
+          console.log(`[${channel.name}] Rechazado por status distinto de 200`);
+          return;
+        }
+
+        const match = channel.match || ".m3u8";
+
+        if (!isCandidateStream(url, match)) {
+          totalRejected++;
+          console.log(`[${channel.name}] Rechazado porque no cumple el patrón correcto`);
+          return;
+        }
+
+        resolved = true;
+        streamUrl = url;
+        clearTimeout(timer);
+
+        console.log(`[${channel.name}] Enlace válido encontrado: ${url}`);
+        resolve(url);
+      });
+    });
+
+    console.log("");
+    console.log(`Procesando: ${channel.name}`);
     console.log(`Página: ${channel.pageUrl}`);
 
     await page.goto(channel.pageUrl, {
@@ -143,42 +187,44 @@ async function findStreamUrl(browser, channel) {
       timeout: PAGE_TIMEOUT_MS,
     });
 
-    // Tiempo adicional para que el reproductor cargue y dispare solicitudes de red.
-    await sleep(3000);
+    const result = await streamPromise;
 
-    const found = await streamPromise;
-    return found || streamUrl;
+    if (!result) {
+      console.log(`[${channel.name}] No se encontró enlace válido`);
+      console.log(`[${channel.name}] Total .m3u8 detectados: ${totalM3u8Detected}`);
+      console.log(`[${channel.name}] Total rechazados: ${totalRejected}`);
+    }
+
+    return result;
   } catch (error) {
-    console.log(`[${channel.name}] Error al procesar página: ${error.message}`);
+    console.log(`[${channel.name}] Error procesando canal: ${error.message}`);
     return null;
   } finally {
     await page.close().catch(() => {});
   }
 }
 
-function buildM3U(channels, newLinks, previousLinks) {
+function buildM3U(channels, results, previousLinks) {
   const lines = ["#EXTM3U", ""];
 
   for (const channel of channels) {
-    const newLink = newLinks.get(channel.name);
-    const previousLink = previousLinks.get(channel.name);
-    const finalLink = newLink || previousLink;
+    const newUrl = results.get(channel.name);
+    const previousUrl = previousLinks.get(channel.name);
 
-    if (!finalLink) {
-      console.log(`[${channel.name}] Sin enlace nuevo y sin enlace anterior. Se omite.`);
-      continue;
-    }
-
-    if (!newLink && previousLink) {
-      console.log(`[${channel.name}] Se conserva enlace anterior.`);
-    }
+    const finalUrl = newUrl || previousUrl;
 
     lines.push(`#EXTINF:-1,${channel.name}`);
-    lines.push(finalLink);
+
+    if (finalUrl) {
+      lines.push(finalUrl);
+    } else {
+      lines.push(`# SIN ENLACE DISPONIBLE PARA ${channel.name}`);
+    }
+
     lines.push("");
   }
 
-  return lines.join("\n").trimEnd() + "\n";
+  return lines.join("\n").trim() + "\n";
 }
 
 function saveIfChanged(content) {
@@ -187,25 +233,30 @@ function saveIfChanged(content) {
     : "";
 
   if (previousContent === content) {
-    console.log("\nSin cambios en el archivo M3U.");
+    console.log("Sin cambios en el archivo M3U.");
     return false;
   }
 
   fs.writeFileSync(OUTPUT_FILE, content, "utf8");
-  console.log(`\nArchivo actualizado: ${OUTPUT_FILE}`);
+  console.log(`Archivo actualizado: ${OUTPUT_FILE}`);
   return true;
 }
 
 async function run() {
   const channels = loadChannels();
   const previousLinks = readPreviousLinks();
-  const newLinks = new Map();
+  const results = new Map();
 
-  console.log(`Canales configurados: ${channels.length}`);
+  console.log(`Canales cargados: ${channels.length}`);
 
   const browser = await puppeteer.launch({
     headless: "new",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+    ],
   });
 
   try {
@@ -213,23 +264,31 @@ async function run() {
       const streamUrl = await findStreamUrl(browser, channel);
 
       if (streamUrl) {
-        newLinks.set(channel.name, streamUrl);
-        console.log(`[${channel.name}] Enlace válido guardado.`);
+        results.set(channel.name, streamUrl);
       } else {
-        console.log(`[${channel.name}] No se encontró enlace .m3u8 válido con status 200.`);
+        const previousUrl = previousLinks.get(channel.name);
+
+        if (previousUrl) {
+          console.log(`[${channel.name}] Se conserva enlace anterior`);
+        } else {
+          console.log(`[${channel.name}] No hay enlace anterior para conservar`);
+        }
       }
+
+      await sleep(1000);
     }
   } finally {
     await browser.close().catch(() => {});
   }
 
-  const content = buildM3U(channels, newLinks, previousLinks);
-  saveIfChanged(content);
+  const newContent = buildM3U(channels, results, previousLinks);
+  saveIfChanged(newContent);
 
-  console.log("\nResumen:");
+  console.log("");
+  console.log("Resumen:");
   console.log(`Canales procesados: ${channels.length}`);
-  console.log(`Enlaces nuevos encontrados: ${newLinks.size}`);
-  console.log(`Enlaces anteriores disponibles: ${previousLinks.size}`);
+  console.log(`Canales actualizados: ${results.size}`);
+  console.log(`Canales conservados o sin enlace: ${channels.length - results.size}`);
 }
 
 run().catch((error) => {
