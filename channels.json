@@ -1,0 +1,217 @@
+[
+  {
+    "name": "ESPN 1",
+    "pageUrl": "https://deporflix.pe/canales/espn-1/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "ESPN 2",
+    "pageUrl": "https://deporflix.pe/canales/espn-2/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "ESPN 3",
+    "pageUrl": "https://deporflix.pe/canales/espn-3/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "ESPN 4",
+    "pageUrl": "https://deporflix.pe/canales/espn4/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "ESPN 5",
+    "pageUrl": "https://deporflix.pe/canales/espn5/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "ESPN 6",
+    "pageUrl": "https://deporflix.pe/canales/espn6/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "ESPN 7",
+    "pageUrl": "https://deporflix.pe/canales/espn7/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "ESPN Deportes",
+    "pageUrl": "https://deporflix.pe/canales/espn-deportes/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "ESPN Premium",
+    "pageUrl": "https://deporflix.pe/canales/espn-premium/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "DirecTV Sports",
+    "pageUrl": "https://deporflix.pe/canales/directv-sports/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "DirecTV Sports 2",
+    "pageUrl": "https://deporflix.pe/canales/directv-sports-2/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "DirecTV Sports 3",
+    "pageUrl": "https://deporflix.pe/canales/directv-sports-3/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Fox Sports",
+    "pageUrl": "https://deporflix.pe/canales/fox-sports/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Fox Sports 2",
+    "pageUrl": "https://deporflix.pe/canales/fox-sports-2/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Fox Sports 3",
+    "pageUrl": "https://deporflix.pe/canales/fox-sports-3/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "TNT Sports",
+    "pageUrl": "https://deporflix.pe/canales/tnt-sports/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "TyC Sports",
+    "pageUrl": "https://deporflix.pe/canales/tyc-sports/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "UFC",
+    "pageUrl": "https://deporflix.pe/canales/ufc/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Liga 1 Max",
+    "pageUrl": "https://deporflix.pe/canales/liga-1-max/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Gol Perú",
+    "pageUrl": "https://deporflix.pe/canales/gol-peru/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Movistar Deportes",
+    "pageUrl": "https://deporflix.pe/canales/movistar-deportes/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Win Sports Premium Más",
+    "pageUrl": "https://deporflix.pe/canales/win-sports-premium-mas/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Win Sports",
+    "pageUrl": "https://deporflix.pe/canales/win-sports/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Azteca Deportes",
+    "pageUrl": "https://deporflix.pe/canales/azteca-deportes/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "TUDN",
+    "pageUrl": "https://deporflix.pe/canales/tudn/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Disney Eventos",
+    "pageUrl": "https://deporflix.pe/canales/disney-eventos/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "América Televisión",
+    "pageUrl": "https://deporflix.pe/canales/america-television/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Latina",
+    "pageUrl": "https://deporflix.pe/canales/latina/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Panamericana TV",
+    "pageUrl": "https://deporflix.pe/canales/panamericana-tv/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "ATV",
+    "pageUrl": "https://deporflix.pe/canales/atv/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Willax TV",
+    "pageUrl": "https://deporflix.pe/canales/willax-tv/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "TV Perú 2",
+    "pageUrl": "https://deporflix.pe/canales/tv-peru-2/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Caracol TV",
+    "pageUrl": "https://deporflix.pe/canales/caracol-tv/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "RCN Colombia",
+    "pageUrl": "https://deporflix.pe/canales/rcn-colombia/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Telemundo",
+    "pageUrl": "https://deporflix.pe/canales/telemundo/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Telefe",
+    "pageUrl": "https://deporflix.pe/canales/telefe/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "TVE La 1",
+    "pageUrl": "https://deporflix.pe/canales/tve-la-1/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "TNT",
+    "pageUrl": "https://deporflix.pe/canales/tnt/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Warner TV",
+    "pageUrl": "https://deporflix.pe/canales/warner-tv/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Star Channel",
+    "pageUrl": "https://deporflix.pe/canales/star-channel/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Canal 5",
+    "pageUrl": "https://deporflix.pe/canales/canal-5/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Paramount Channel",
+    "pageUrl": "https://deporflix.pe/canales/paramount-channel/",
+    "match": ".m3u8"
+  },
+  {
+    "name": "Azteca 7",
+    "pageUrl": "https://deporflix.pe/canales/azteca-7/",
+    "match": ".m3u8"
+  }
+]
