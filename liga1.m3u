@@ -1,79 +1,94 @@
 #EXTM3U
 
 #EXTINF:-1,ESPN 1
-https://khala.skylivehd.com/espn/index.m3u8?ip=68.154.119.209&token=527da8232e0da496fe8ebccb48b8990e27b09387-7c-1785574302-1785520302
+https://khala.skylivehd.com/espn/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=86bda05f8dddfa11ae2c4d1b67548f10ad2b057a-c2-1785578817-1785524817
 
 #EXTINF:-1,ESPN 2
-https://khala.skylivehd.com/global/espn2/index.m3u8?ip=68.154.119.209&token=815e75d5284314bdc46cad83b48bc7ddec1e015d-a4-1785574305-1785520305
+https://khala.skylivehd.com/espn2/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=170bb109d49b6ce64f64843efb191bd17f6b7227-ea-1785578820-1785524820
 
 #EXTINF:-1,ESPN 3
-https://khala.skylivehd.com/global/espn3/index.m3u8?ip=68.154.119.209&token=d7c862812620d0421c80a09a229ba8fc38078b2e-f5-1785574309-1785520309
+https://khala.skylivehd.com/espn3/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=e0dcef855653fb2f5a68f55f51f23a485855e473-88-1785578823-1785524823
 
 #EXTINF:-1,ESPN 4
-https://khala.skylivehd.com/global/espn4/index.m3u8?ip=68.154.119.209&token=2e04396a4459f374d9406676e102fdfe04611a74-73-1785574313-1785520313
+https://khala.skylivehd.com/espn4/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=2a2e78f9051617e9764ce7cb8f94ff354a8f4dfb-40-1785578826-1785524826
 
 #EXTINF:-1,ESPN 5
-https://khala.skylivehd.com/global/espn5/index.m3u8?ip=68.154.119.209&token=ed227317af75df28b7bc816acba3130f91bcc66f-60-1785574316-1785520316
+https://khala.skylivehd.com/espn5/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=14dba7fe05775555230d74d10f15646a324da1b2-6c-1785578829-1785524829
 
 #EXTINF:-1,ESPN 6
-https://khala.skylivehd.com/global/espn6/index.m3u8?ip=68.154.119.209&token=a5241e2fb82f1c1474e5bba965679e5dddd04c1f-76-1785574321-1785520321
+https://khala.skylivehd.com/espn6/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=e85a77339767d66198682ac21e0f51a2895109ac-14-1785578831-1785524831
 
 #EXTINF:-1,ESPN 7
-https://khala.skylivehd.com/global/espn7/index.m3u8?ip=68.154.119.209&token=4f3aa8559f470efd8d9ba92ce38dfb2b43735c80-1e-1785574324-1785520324
+https://khala.skylivehd.com/espn7/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=e6261538cc251002bd90f0db90cd361e8772cf20-1f-1785578834-1785524834
 
 #EXTINF:-1,ESPN Deportes
-https://khala.skylivehd.com/global/espndeportes/index.m3u8?ip=68.154.119.209&token=a30ac2f5e64ebb23beb0be3c1d7a1169b1b440e2-30-1785574328-1785520328
+https://khala.skylivehd.com/espndeportes/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=2ec182314f22bfd3817f132ffca5634ad1ec0f84-71-1785578836-1785524836
 
 #EXTINF:-1,ESPN Premium
-https://khala.skylivehd.com/global/espnpremium/index.m3u8?ip=68.154.119.209&token=95f18f7a3e60dac90bc4ed39644e8324d5b33ac9-76-1785574331-1785520331
+https://khala.skylivehd.com/espnpremium/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=b0d8e0ed565d6d417b7e7d16d6295c31df542370-89-1785578839-1785524839
 
 #EXTINF:-1,DirecTV Sports
-https://khala.skylivehd.com/global/dsports/index.m3u8?ip=68.154.119.209&token=585ce832e976c2ce973b21b6e445340b0896c846-43-1785574335-1785520335
+https://khala.skylivehd.com/dsports/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=73eb95b6763e26e95e1132c8187b8a2c01a92e0d-2d-1785578841-1785524841
+
+#EXTINF:-1,DirecTV Sports 2
+# SIN ENLACE DISPONIBLE PARA DirecTV Sports 2
 
 #EXTINF:-1,DirecTV Sports 3
-https://khala.skylivehd.com/global/dsportsplus/index.m3u8?ip=68.154.119.209&token=0d0ec31bbb9e704a4156d896e342dae17a51fd19-b4-1785574364-1785520364
+https://khala.skylivehd.com/dsportsplus/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=0ee9380642a2af35d800a9e27475322997a34839-f4-1785578871-1785524871
 
 #EXTINF:-1,Fox Sports
-https://khala.skylivehd.com/global/fox1ar/index.m3u8?ip=68.154.119.209&token=41fb7eb1aa1db50a62c1f926043cdd93a17c2017-6b-1785574368-1785520368
+https://khala.skylivehd.com/fox1ar/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=551f122f360cb44f4889ee98c5d22fedee5f5d65-60-1785578874-1785524874
 
 #EXTINF:-1,Fox Sports 2
-https://khala.skylivehd.com/global/fox2ar/index.m3u8?ip=68.154.119.209&token=e9bfe9756e78ad21d0e23981f96770acebd4bfe8-5f-1785574371-1785520371
+https://khala.skylivehd.com/fox2ar/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=cd65c79c5feebfe13eab37987b673a164aa04932-94-1785578877-1785524877
 
 #EXTINF:-1,Fox Sports 3
-https://khala.skylivehd.com/global/fox3ar/index.m3u8?ip=68.154.119.209&token=316bf4fef25e31707476042bb27b1bc264c836ac-97-1785574375-1785520375
+https://khala.skylivehd.com/fox3ar/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=8b98f5f6c86e523e7338389776f74f20f1d78343-2e-1785578880-1785524880
 
 #EXTINF:-1,TNT Sports
-https://khala.skylivehd.com/global/tntsports/index.m3u8?ip=68.154.119.209&token=4e6e37ad1cc0e895a78c4bf9c998013383d0dfba-7a-1785574379-1785520379
+https://khala.skylivehd.com/tntsports/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=d1bd4c8ca1744926873b58ffd948f359adc61067-b7-1785578883-1785524883
 
 #EXTINF:-1,TyC Sports
-https://khala.skylivehd.com/global/tycsports/index.m3u8?ip=68.154.119.209&token=ce9872ba975b17cbc04094c7a4c9937029958ae7-4e-1785574382-1785520382
+https://khala.skylivehd.com/tycsports/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=99583ab8277796b6d5672813a069c8b965a10992-bd-1785578886-1785524886
+
+#EXTINF:-1,UFC
+# SIN ENLACE DISPONIBLE PARA UFC
 
 #EXTINF:-1,Liga 1 Max
-https://khala.skylivehd.com/global/liga1max/index.m3u8?ip=68.154.119.209&token=84b6da61a376bb0b9eb7a3813a97892c134a2b1c-ec-1785574411-1785520411
+https://khala.skylivehd.com/liga1max/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=5522d2cb79d2ef892121eb2ca970c19ec99c4340-25-1785578914-1785524914
+
+#EXTINF:-1,Gol Perú
+# SIN ENLACE DISPONIBLE PARA Gol Perú
 
 #EXTINF:-1,Movistar Deportes
-https://khala.skylivehd.com/global/movistar_deportes_peru/index.m3u8?ip=68.154.119.209&token=3becdfe9b39b6eb4b48c3c39d87b8dcefd68d8ef-35-1785574440-1785520440
+https://khala.skylivehd.com/movistar_deportes_peru/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=54b1b1144d9397695d61b6492c0752ea8f337209-51-1785578943-1785524943
 
 #EXTINF:-1,Win Sports Premium Más
-https://khala.skylivehd.com/global/winplus/index.m3u8?ip=68.154.119.209&token=79a3b210ceedaeacd82b31fcc1c3b12f79d40466-d2-1785574444-1785520444
+https://khala.skylivehd.com/winplus/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=5522f6761330eda4bbff2bd591ff9df9ae9a7121-ea-1785578946-1785524946
 
 #EXTINF:-1,Win Sports
-https://khala.skylivehd.com/global/winsports/index.m3u8?ip=68.154.119.209&token=cc9f5df85b98e2504e7952cfe79c947f3d4d3b54-a8-1785574447-1785520447
+https://khala.skylivehd.com/winsports/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=b1020af87f6d2d06122a39d054b2862e902b1f2e-e5-1785578949-1785524949
+
+#EXTINF:-1,Azteca Deportes
+# SIN ENLACE DISPONIBLE PARA Azteca Deportes
 
 #EXTINF:-1,TUDN
-https://khala.skylivehd.com/global/tudnmx/index.m3u8?ip=68.154.119.209&token=45f9921198cb24b0027d948479c874d384e4f07b-df-1785574476-1785520476
+https://khala.skylivehd.com/tudnmx/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=f0d339606b8fdc366234cedb7de6872fae70606a-5a-1785578978-1785524978
 
 #EXTINF:-1,Disney Eventos
-https://khala.skylivehd.com/global/dsports/index.m3u8?ip=68.154.119.209&token=07ce3b9c768c1b5f8caf9da563b538ce7454d34f-c5-1785574480-1785520480
+https://khala.skylivehd.com/dsports/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=bebe89cbe6b51920196e8ebf055a1a3d0b9c75a5-8f-1785578981-1785524981
 
 #EXTINF:-1,América Televisión
-https://khala.skylivehd.com/global/americatv/index.m3u8?ip=68.154.119.209&token=2aee33ae76ca70a1f95d3576021aade0747ab95c-b1-1785574483-1785520483
+https://khala.skylivehd.com/americatv/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=70a096c4be4401db4bde99b8f4ef6566e8e2add7-4c-1785578984-1785524984
 
 #EXTINF:-1,Latina
 https://jireh-5-hls-video-us-isp.dps.live/hls-video/567ffde3fa319fadf3419efda25619456231dfea/latina/latina.smil/playlist.m3u8?dpssid=b2109516065069f19beeaeba7&sid=ba5t1l1xb2188362367069f19beeaeba6&ndvc=1
 
 #EXTINF:-1,Panamericana TV
 https://sc2.escuela4.com/live/e4c39f53ffa5a35f2b17b0164819bcbc6d31e072.m3u8
+
+#EXTINF:-1,ATV
+# SIN ENLACE DISPONIBLE PARA ATV
 
 #EXTINF:-1,Willax TV
 https://cdndirector.dailymotion.com/cdn/live/video/xa63dow.m3u8?sec=pQnbjW8X4HLnVCoqJ0apdNxQxq_HaoazC5cdpo8U-niIEbFMGmertZ8dz3rZxmDUsE8XtQ5LPT4cdxugvdoiuvY3BTwoc1cyNoGkaJMHgJE&dmTs=862336&dmV1st=90bcfe5e-6f5b-572b-52a4-44b06696f433
@@ -82,22 +97,34 @@ https://cdndirector.dailymotion.com/cdn/live/video/xa63dow.m3u8?sec=pQnbjW8X4HLn
 https://cdnhd.iblups.com/hls/777b4d4cc0984575a7d14f6ee57dbcaf7.m3u8
 
 #EXTINF:-1,Caracol TV
-https://khala.skylivehd.com/global/evento6/index.m3u8?ip=68.154.119.209&token=1b964d0eb4578ac22bcb51e8f81f3c89a23664a4-50-1785574527-1785520527
+https://khala.skylivehd.com/evento6/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=1a81739420ce7b15a18454839d9a51d342ae1337-35-1785579118-1785525118
 
 #EXTINF:-1,RCN Colombia
 https://rcntv-rcnmas-1-us.roku.wurl.tv/playlist.m3u8
 
 #EXTINF:-1,Telemundo
-https://khala.skylivehd.com/global/telemundo/index.m3u8?ip=68.154.119.209&token=9026bd2731d5b6e415034c497a588f85bfbac4a6-c4-1785574534-1785520534
+https://khala.skylivehd.com/telemundo/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=f65dbf0c16d2ea2532d2b57ef795409d82a11f63-7e-1785579147-1785525147
 
 #EXTINF:-1,Telefe
-https://khala.skylivehd.com/global/telefe/index.m3u8?ip=68.154.119.209&token=549f89ece0a616afa43df3d299239bf7fb2b13aa-cc-1785574538-1785520538
+https://khala.skylivehd.com/telefe/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=df50bc367e60795fbc6c7243927c477c5b9e8d00-63-1785579150-1785525150
 
 #EXTINF:-1,TVE La 1
 https://rtvelivestream.rtve.es/rtvesec/la1/la1_main_dvr_drm.m3u8?hdnts=exp%3D1785543923%7Ehmac%3D7112151b1e885bd4506bfee0ae0d8bf83c0d196ec1f3e3d772c6cfb65321479f&idasset=1688877
 
+#EXTINF:-1,TNT
+# SIN ENLACE DISPONIBLE PARA TNT
+
+#EXTINF:-1,Warner TV
+# SIN ENLACE DISPONIBLE PARA Warner TV
+
+#EXTINF:-1,Star Channel
+# SIN ENLACE DISPONIBLE PARA Star Channel
+
 #EXTINF:-1,Canal 5
-https://khala.skylivehd.com/global/canal5mx/index.m3u8?ip=68.154.119.209&token=1e84eabc8e4ed90fb409193921b1ab863ef73226-40-1785574622-1785520622
+https://khala.skylivehd.com/canal5mx/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=838a8e4141062ec342810dad717decc2519e26b3-4e-1785579258-1785525258
+
+#EXTINF:-1,Paramount Channel
+# SIN ENLACE DISPONIBLE PARA Paramount Channel
 
 #EXTINF:-1,Azteca 7
-https://khala.skylivehd.com/global/azteca7/index.m3u8?ip=68.154.119.209&token=317ac38e779968ebc54375fef351ef50725b459b-ee-1785574650-1785520650
+https://khala.skylivehd.com/azteca7/tracks-v1a1/mono.m3u8?ip=172.172.87.82&token=85026365aaa9307ab70aacb3dcad69d61c315cdd-69-1785579287-1785525287
