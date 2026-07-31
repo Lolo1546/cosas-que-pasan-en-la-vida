@@ -4,8 +4,8 @@ const puppeteer = require("puppeteer");
 const CHANNELS_FILE = "channels.json";
 const OUTPUT_FILE = "liga1.m3u";
 
-const PAGE_TIMEOUT_MS = 45000;
-const STREAM_WAIT_MS = 25000;
+const PAGE_TIMEOUT_MS = 25000;
+const STREAM_WAIT_MS = 12000;
 const VALID_STATUS = 200;
 
 // Patrón correcto según lo observado en Network:
